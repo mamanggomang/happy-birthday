@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kartu Ucapan Ulang Tahun</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatItem {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .emoji {
+      font-size: 50px;
+      margin: 20px 0;
+      animation: floatItem 2s infinite ease-in-out;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .emoji:hover {
+      transform: scale(1.2);
+    }
+
+    .start-button {
+      padding: 12px 20px;
+      font-size: 18px;
+      background: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    audio {
+      display: none;
+    }
+
+    .balloon {
+      position: absolute;
+      font-size: 40px;
+      animation: fly 10s linear infinite;
+    }
+
+    .balloon:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .balloon:nth-child(2) { left: 30%; animation-delay: 3s; }
+    .balloon:nth-child(3) { left: 60%; animation-delay: 5s; }
+    .balloon:nth-child(4) { left: 80%; animation-delay: 1s; }
+
+    @keyframes fly {
+      0% {
+        bottom: -100px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        transform: translateX(50px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Balon Terbang -->
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+
+  <!-- Kartu Ucapan -->
+  <div class="card">
+    <div class="emoji">🎂</div>
+    <h1>誕生日おめでとう, りあ🥳
+    </h1>
+    <p>長生きして、ずっと元気で、夢が全部叶いますように！ 🎉</p>
+
+    <!-- Kado bisa diklik -->
+    <div class="emoji" onclick="bukaKado()">🎁</div>
+    <p style="margin-top: -10px; font-size: 14px; color: #555;">(click on the gift😁)</p>
+
+    <button class="start-button" onclick="playMusic()">play the music</button>
+  </div>
+
+  <!-- Musik Lokal -->
+  <audio id="music" src="HAPPY Birthday Song – Happy Birthday to You.mp3" loop></audio>
+
+  <script>
+    function playMusic() {
+      const music = document.getElementById("music");
+      music.play();
+    }
+
+    function bukaKado() {
+      alert("🎉 Surprise! 今日、ハッピーと甘いものいっぱいの一日になりますように〜！\n\n🎁 気持ちだけだけど、受け取ってくれたら嬉しいな。😁 🎂");
+      // Atau ganti ini dengan redirect:
+      // window.location.href = "https://link-ke-foto-atau-video-ucapan.com";
+    }
+  </script>
+</body>
+</html>
